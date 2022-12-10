@@ -13,7 +13,7 @@
                         <span>编辑信息</span>
                     </template>
                     <el-menu-item-group>
-                        <el-menu-item index="2-1" @click="goTo('/me/update')">修改基本信息</el-menu-item>
+                        <el-menu-item index="2-1" @click="goTo('/me/update_userinfo')">修改基本信息</el-menu-item>
                         <el-menu-item index="2-2" @click="goTo('/me/editphone')">修改手机号</el-menu-item>
                         <el-menu-item index="2-3" @click="goTo('/me/editpwd')">修改密码</el-menu-item>
                     </el-menu-item-group>
@@ -44,29 +44,35 @@ export default {
 
     computed: {
         ...mapState(['userInfo'])
-    }
+    },
+    methods: {
+        goBack() {
+            this.$router.replace('/home');
+        },
+        goTo(path) {
+            this.$router.replace(path);
+        },
+    },
 
 }
 </script>
 
 <style scoped>
-
 .sidebar-sticky {
 
-  display: block;
-  text-align: center;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-  color: #12263f;
-  margin-right: 0;
-  font-size: 1.0625rem;
-  line-height: inherit;
-  white-space: nowrap;
-  background: #f8f9fa;
-  float: left;
-  margin-top: 50px;
-  width: 200px;
-  height: 200px;
+    display: block;
+    text-align: center;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #12263f;
+    margin-right: 0;
+    font-size: 1.0625rem;
+    line-height: inherit;
+    white-space: nowrap;
+    background: #f8f9fa;
+    float: left;
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
 }
-
 </style>

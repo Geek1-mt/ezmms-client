@@ -16,8 +16,10 @@ export const pwdLogin = (username, password) => ajax(BASE_URL + 'api/login', { u
 
 
 //获取登录的用户信息
-export const getUserInfo = (params) => ajax(BASE_URL + '/api/user_info', params);
+export const getUserInfo = (params) => ajax(BASE_URL + 'api/user_info', params)
 
+//更新-修改用户信息
+export const changeUserInfo = (params) => ajax(BASE_URL + 'api/update_user_info', params, 'POST')
 
 
 

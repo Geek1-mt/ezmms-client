@@ -23,7 +23,7 @@
                 <span>{{ userInfo.user_sex || '暂无' }}</span>
             </div>
             <div class="user-item">
-                <span>常住地</span>
+                <span>地址</span>
                 <span>{{ userInfo.user_address || '暂无' }}</span>
             </div>
             <div class="user-item">
@@ -32,7 +32,7 @@
             </div>
             <div class="user-item">
                 <span>个性签名</span>
-                <span>{{ userInfo.user_sign || '暂无' }}</span>
+                <span style="font-style:italic">{{ userInfo.user_sign || '暂无' }}</span>
             </div>
         </div>
     </div>
@@ -51,7 +51,8 @@ export default {
     },
     computed: {
         ...mapState(['userInfo'])
-    }
+    },
+     
 }
 </script>
 
@@ -92,7 +93,7 @@ export default {
             background-color: #fff;
             border-bottom: 1px solid #e0e0e0;
             display: flex;
-            justify-content:space-around;
+            justify-content: space-around;
             align-items: center;
         }
 
