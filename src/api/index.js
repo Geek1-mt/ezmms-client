@@ -21,6 +21,8 @@ export const getUserInfo = (params) => ajax(BASE_URL + 'api/user_info', params)
 //更新-修改用户信息
 export const changeUserInfo = (params) => ajax(BASE_URL + 'api/update_user_info', params, 'POST')
 
+// 修改用户密码
+export const changeUserPw = (id, originPw, newPw) => ajax(BASE_URL + 'api/update_user_password', { id, originPw, newPw }, 'POST');
 
 
 

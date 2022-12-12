@@ -1,50 +1,50 @@
 <template>
+    <div class="container">
+        <div id="main">
+            <div class="login">
+                <h1>欢迎来到商城综合系统</h1>
+                <!-- <h2>登录/注册</h2> -->
+                <el-tabs type="border-card" class="login-tabs" stretch @tab-click="handleTabsClick">
 
-    <div class="login">
-        <h1>欢迎来到商城综合系统</h1>
-        <!-- <h2>登录/注册</h2> -->
-        <el-tabs type="border-card" class="login-tabs" stretch @tab-click="handleTabsClick">
+                    <el-tab-pane label="用户登录" name="">
+                        <el-form ref="loginForm" :model="loginForm" status-icon :rules="rules" class="login-Form">
+                            <el-form-item label="用户名" prop="username">
+                                <el-input type="text" v-model="loginForm.username"></el-input>
+                            </el-form-item>
+                            <el-form-item label="密码" prop="password">
+                                <el-input type="password" v-model="loginForm.password"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" @click="submitForm('loginForm')">点击登录</el-button>
+                                <el-button type="info" @click="resetForm('loginForm')">清空列表</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-tab-pane>
 
-            <el-tab-pane label="用户登录" name="">
-                <el-form ref="loginForm" :model="loginForm" status-icon :rules="rules" class="login-Form">
+                    <el-tab-pane label="用户注册" name="register">
+                        <el-form ref="registerForm" :model="registerForm" status-icon :rules="rules" class="login-Form">
+                            <el-form-item label="用户名" prop="username">
+                                <el-input type="text" v-model="registerForm.username"></el-input>
+                            </el-form-item>
+                            <el-form-item label="密码" prop="password">
+                                <el-input type="password" v-model="registerForm.password"></el-input>
+                            </el-form-item>
+                            <el-form-item label="确认密码" prop="verifypassword">
+                                <el-input type="password" v-model="registerForm.verifypassword"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" @click="submitForm('registerForm')">点击注册</el-button>
+                                <el-button type="info" @click="resetForm('registerForm')">清空列表</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-tab-pane>
 
-                    <el-form-item label="用户名" prop="username">
-                        <el-input type="text" v-model="loginForm.username"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input type="password" v-model="loginForm.password"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('loginForm')">点击登录</el-button>
-                        <el-button type="info" @click="resetForm('loginForm')">清空列表</el-button>
-                    </el-form-item>
-                </el-form>
-            </el-tab-pane>
+                </el-tabs>
+            </div>
 
-
-            <el-tab-pane label="用户注册" name="register">
-
-                <el-form ref="registerForm" :model="registerForm" status-icon :rules="rules" class="login-Form">
-                    <el-form-item label="用户名" prop="username">
-                        <el-input type="text" v-model="registerForm.username"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input type="password" v-model="registerForm.password"></el-input>
-                    </el-form-item>
-                    <el-form-item label="确认密码" prop="verifypassword">
-                        <el-input type="password" v-model="registerForm.verifypassword"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('registerForm')">点击注册</el-button>
-                        <el-button type="info" @click="resetForm('registerForm')">清空列表</el-button>
-                    </el-form-item>
-                </el-form>
-
-
-            </el-tab-pane>
-        </el-tabs>
-
+        </div>
     </div>
+
 </template>
   
 <script>
@@ -133,11 +133,11 @@ export default {
                                 position: 'top-left'
                             });
                             this.$router.push('/home')
-                            
+
                             window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo))
                             //同步用户数据
                             this.syncUserInfo(this.userInfo)
-                            
+
                         } else {
                             this.$notify.error({
                                 title: '登录失败',
@@ -248,19 +248,33 @@ export default {
   华文隶书：STLiti
   华文行楷：STXingkai
   华文新魏：STXinwei
-  
   */
 
 h1 {
-    margin-top: 30px;
+    margin-top: 50px;
     color: rgb(61, 57, 179);
     font-family: STFangsong
 }
 
+.container {
+    width: 100%;
+    background: #f2f2f2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    #main {
+        flex: 1;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+}
+
 .login {
 
-
-    //background: url("../../public/backImg/back1.jpg");
+    margin-top: 0px; 
+    background: url("../../../public/LoginBack.jpg");
     background-repeat: no-repeat; //将图片样式不重复
     background-size: 100% 100%; //设置图片大小
     position: fixed;
@@ -268,11 +282,8 @@ h1 {
     height: 100%; //设置div高度
     width: 100%; //设置div宽度
 
-
     .login-Form {
-
         padding: 40px 60px;
-
     }
 
     .login-tabs {
@@ -282,6 +293,5 @@ h1 {
         //border: 2px double #cec7c7;
         opacity: 0.9;
     }
-
 }
 </style>

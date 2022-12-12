@@ -1,22 +1,24 @@
 <template>
     <div class="user-detail">
-        <div class="user-detail-top">基本信息</div>
+        <div class="user-detail-top">修改基本信息</div>
         <div class="user-detail-group">
             <div class="user-icon">
                 <span>头像</span>
                 <el-upload class="avatar-uploader" action="" :auto-upload="false" :show-file-list="false"
                     :before-upload="beforeAvatarUpload" :on-change="handleAvatarChange">
                     <img v-if="user_avatar" :src="user_avatar_imgUrl" class="avatar">
-                    <img v-else src="../images/no_login.jpg" class="avatar">
+                    <img v-else :src="userInfo.user_avatar" class="avatar">
                     <i class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </div>
             <div class="user-item">
                 <span>手机</span>
-                <span>{{ userInfo.user_phone || "暂未设置" }}</span>
+                <el-input type="text" placeholder="请输入手机号" v-model="user_phone" maxlength="11" show-word-limit clearable
+                    style="width:200px">
+                </el-input>
             </div>
             <div class="user-item">
-                <span>账号</span>
+                <span>账号（注册时所填用户名）</span>
                 <span>{{ userInfo.user_name || "暂未设置" }}</span>
             </div>
             <div class="user-item">
@@ -69,6 +71,7 @@ export default {
             user_birthday: '',
             user_avatar_imgUrl: '',
             user_avatar: null,
+            upload: false,
 
             options: [{
                 value: '男',
@@ -83,12 +86,17 @@ export default {
         ...mapState(["userInfo"])
     },
     mounted() {
+        //初始化同步用户数据
+        this.user_avatar = this.userInfo.user_avatar || null
         this.user_sign = this.userInfo.user_sign || '';
         this.user_address = this.userInfo.user_address || '';
         this.user_nickname = this.userInfo.user_nickname || '';
         this.user_sex = this.userInfo.user_sex || '';
         this.user_phone = this.userInfo.user_phone || '';
         this.user_birthday = this.userInfo.user_birthday || '';
+
+        //同步用户原有头像
+        this.user_avatar_imgUrl = this.userInfo.user_avatar || null
     },
     methods: {
         beforeAvatarUpload(file) {
@@ -106,20 +114,26 @@ export default {
         handleAvatarChange(file, fileList) {
             this.user_avatar_imgUrl = URL.createObjectURL(file.raw);
             this.user_avatar = file.raw;
+            this.upload = true
         },
         // 修改用户信息
         async saveUserInfo() {
             // 3.1 请求接口
             let formData = new FormData();
             formData.append('id', this.userInfo.id);
+            formData.append('user_phone', this.user_phone)
             formData.append('user_nickname', this.user_nickname);
             formData.append('user_sex', this.user_sex);
             formData.append('user_address', this.user_address);
             formData.append('user_birthday', this.user_birthday);
             formData.append('user_sign', this.user_sign);
+            //更新头像
             if (this.user_avatar) {
                 formData.append('user_avatar', this.user_avatar);
+            }else{
+                formData.append('user_avatar', this.user_avatar);
             }
+            
 
             let result = await changeUserInfo(formData);
             // 3.3 返回主界面
@@ -133,7 +147,7 @@ export default {
                 this.$store.dispatch('getUserInfo', { user_id: this.userInfo.id });
                 // 3.5 返回主界面
                 setTimeout(() => {
-                    this.$router.replace('/me/profile');
+                    this.$router.replace('/user/profile');
                 }, 2000)
             }
         }

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="sidebar-sticky">
             <el-menu default-active="1" class="el-menu-vertical-demo">
-                <el-menu-item index="1" @click="goTo('/me/profile')">
+                <el-menu-item index="1" @click="goTo('/user/profile')">
                     <i class="el-icon-document-copy"></i>
                     <span slot="title">我的资料</span>
                 </el-menu-item>
@@ -13,9 +13,8 @@
                         <span>编辑信息</span>
                     </template>
                     <el-menu-item-group>
-                        <el-menu-item index="2-1" @click="goTo('/me/update_userinfo')">修改基本信息</el-menu-item>
-                        <el-menu-item index="2-2" @click="goTo('/me/editphone')">修改手机号</el-menu-item>
-                        <el-menu-item index="2-3" @click="goTo('/me/editpwd')">修改密码</el-menu-item>
+                        <el-menu-item index="2-1" @click="goTo('/user/update_userinfo')">修改基本信息</el-menu-item>
+                        <el-menu-item index="2-3" @click="goTo('/user/update_password')">修改密码</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="3">

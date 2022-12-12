@@ -1,6 +1,6 @@
 <template>
     <div class="user-detail">
-        <div class="user-detail-top">基本信息</div>
+        <div class="user-detail-top">用户基本信息</div>
         <div class="user-detail-group">
             <div class="user-icon">
                 <span>头像</span>
@@ -52,7 +52,7 @@ export default {
     computed: {
         ...mapState(['userInfo'])
     },
-     
+
 }
 </script>
 
@@ -63,6 +63,7 @@ export default {
     margin: 20px auto;
 
     .user-detail-top {
+        margin-top: 40px;
         width: 100%;
         height: 60px;
         line-height: 60px;
