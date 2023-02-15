@@ -25,7 +25,14 @@ export const changeUserInfo = (params) => ajax(BASE_URL + 'api/update_user_info'
 export const changeUserPw = (id, originPw, newPw) => ajax(BASE_URL + 'api/update_user_password', { id, originPw, newPw }, 'POST');
 
 
+/*主页方法*/
 
+//请求主页轮播图
+export const getHomeBanner = () => ajax(BASE_URL + 'api/homebanner');
 
+//请求主页商品类别数
+export const getCategory = () => ajax(BASE_URL + 'api/category')
 
+//请求主页商品数据
+export const getHomeProductList = () => ajax(BASE_URL + 'api/homeproductlist');
 

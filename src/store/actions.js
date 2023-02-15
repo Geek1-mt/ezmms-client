@@ -1,9 +1,17 @@
 import {
-    getUserInfo
+    getUserInfo,
+    getHomeBanner,
+    getCategory,
+    getHomeProductList,
 } from '../api'
 
 import {
-    USER_INFO
+    USER_INFO,
+    HOME_BANNER,
+    CATEGORY_LIST,
+    HOME_PRODUCT_LIST,
+
+
 } from './mutation-types'
 
 export default {
@@ -24,4 +32,21 @@ export default {
         }
         commit(USER_INFO, { userInfo });
     },
+
+    //获取轮播图
+    async reqHomeBanner({ commit }) {
+        const result = await getHomeBanner();
+        commit(HOME_BANNER, { homebanner: result.message })
+    },
+
+    //获取商品类别
+    async reqCategory({ commit }) {
+        const result = await getCategory();
+        commit(CATEGORY_LIST, { categoryList: result.message })
+    },
+
+    async reqHomeProductList({commit}) {
+        const result = await getHomeProductList();
+        commit(HOME_PRODUCT_LIST, {homeproductlist: result.message});
+      },
 }
