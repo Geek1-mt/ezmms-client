@@ -39,6 +39,7 @@
 					<div><a @click.prevent="getRList(cate.cate_id)">MORE</a></div>
 				</div>
 				<div class="pro_show">
+                    <br>
 					<ProductItem v-for="(pro) in homeproductlist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro" />
 				</div>
 			</div>
@@ -53,21 +54,28 @@
 import { mapState } from 'vuex';
 import { MessageBox } from 'element-ui'
 
+//引入组件
+import ProductItem from '../../components/ProductItem'
+
 export default {
 
     computed: {
         ...mapState(['homebanner', 'categoryList','homeproductlist', 'userInfo'])
     },
+    components:{
+        ProductItem,
+
+    },
     mounted() {
         //请求轮播图的数据
         this.$store.dispatch('reqHomeBanner')
-        //请求类别数据
+        //请求主页类别数据
         this.$store.dispatch('reqCategory')
-        // 请求商品数据
-        if (this.userInfo && this.userInfo.id) {
-            let user_id = this.userInfo.id;
-            this.$store.dispatch('reqCartsGoods', { user_id });
-        }
+        //请求购物车内的物品数据
+        // if (this.userInfo && this.userInfo.id) {
+        //     let user_id = this.userInfo.id;
+        //     this.$store.dispatch('reqCartsGoods', { user_id });
+        // }
     },
     watch: {
         categoryList() {
@@ -241,7 +249,8 @@ export default {
 
 .pro_line>h3 {
     display: inline-block;
-}
+    /* color: #b61313;*/
+} 
 
 .pro_line>div {
     display: inline-block;
@@ -250,7 +259,7 @@ export default {
 }
 
 .pro_line>div>a {
-    color: red;
+    color: rgb(80, 124, 224);
     font-weight: 700;
     font-size: 17px;
     text-decoration: none;
@@ -258,7 +267,7 @@ export default {
 }
 
 .pro_line>div>a:after {
-    content: '»';
+    content: '-»';
     opacity: 0;
     /*opacity属性不占用文档流的空间*/
     transition: 0.5s;

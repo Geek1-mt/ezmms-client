@@ -4,6 +4,13 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 
+//引入图片懒加载
+import Vant,{Lazyload} from 'vant';
+import 'vant/lib/index.css'
+Vue.use(Vant);
+Vue.use(Lazyload);
+
+
 Vue.config.productionTip = false
 
 new Vue({
