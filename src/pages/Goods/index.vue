@@ -178,21 +178,7 @@ export default {
           message: '已取消'
         });
       });
-
-      // if (result.success_code === 200) {
-      //   MessageBox({
-      //     type: 'success',
-      //     message: "评论发布成功",
-      //     showClose: true,
-      //   });
-
-      // } else {
-      //   MessageBox({
-      //     type: 'info',
-      //     message: "发布失败",
-      //     showClose: true,
-      //   });
-      // }
+      
     },
     // 监听商品点击
     async dealWithCellBtnClick(goods) {
