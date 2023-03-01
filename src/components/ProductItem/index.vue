@@ -2,6 +2,7 @@
     <div class="pro">
         <img v-lazy="pro.thumb_url" class="pro_img">
         <div class="pro_text">
+            <!-- 显示价格 -->
             <p><em>{{ pro.price / 100 +'￥' }}</em></p>
             <p>{{ pro.short_name }}</p>
             <!-- <p>ezmmsuper商店</p> -->

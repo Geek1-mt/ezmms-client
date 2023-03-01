@@ -9,7 +9,14 @@ export default {
     categoryList: [],
 
     //商品数据
-    homeproductlist:[],
+    homeproductlist: [],
+
+    //商品详细数据
+    goodsDetail: [],
+
+    //评论
+    comment: [],
+
 
 
 }

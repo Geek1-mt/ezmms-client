@@ -3,6 +3,8 @@ import {
     getHomeBanner,
     getCategory,
     getHomeProductList,
+    getGoodsDetail,
+    getComment
 } from '../api'
 
 import {
@@ -10,6 +12,8 @@ import {
     HOME_BANNER,
     CATEGORY_LIST,
     HOME_PRODUCT_LIST,
+    GOODS_DETAIL,
+    COMMENT
 
 
 } from './mutation-types'
@@ -33,6 +37,7 @@ export default {
         commit(USER_INFO, { userInfo });
     },
 
+
     //获取轮播图
     async reqHomeBanner({ commit }) {
         const result = await getHomeBanner();
@@ -45,8 +50,21 @@ export default {
         commit(CATEGORY_LIST, { categoryList: result.message })
     },
 
-    async reqHomeProductList({commit}) {
+    //获取商品数据
+    async reqHomeProductList({ commit }) {
         const result = await getHomeProductList();
-        commit(HOME_PRODUCT_LIST, {homeproductlist: result.message});
-      },
+        commit(HOME_PRODUCT_LIST, { homeproductlist: result.message });
+    },
+
+    //获取商品详细数据
+    async reqGoodsDetail({ commit }, params) {
+        const result = await getGoodsDetail(params);
+        commit(GOODS_DETAIL, { goodsDetail: result.message });
+    },
+
+    //获取评价
+    async reqComment({ commit }, params) {
+        const result = await getComment(params);
+        commit(COMMENT, { comment: result.message });
+    },
 }

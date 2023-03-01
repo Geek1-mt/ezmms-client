@@ -5,6 +5,8 @@ import {
     HOME_BANNER,
     CATEGORY_LIST,
     HOME_PRODUCT_LIST,
+    GOODS_DETAIL,
+    COMMENT,
 } from './mutation-types'
 
 export default {
@@ -13,12 +15,18 @@ export default {
     },
 
     [HOME_BANNER](state, { homebanner }) {
-        state.homebanner=homebanner
+        state.homebanner = homebanner
     },
-    [CATEGORY_LIST](state,{categoryList}){
+    [CATEGORY_LIST](state, { categoryList }) {
         state.categoryList = categoryList
     },
-    [HOME_PRODUCT_LIST](state,{homeproductlist}){
-        state.homeproductlist=state.homeproductlist.concat(homeproductlist)
-    }
+    [HOME_PRODUCT_LIST](state, { homeproductlist }) {
+        state.homeproductlist = state.homeproductlist.concat(homeproductlist)
+    },
+    [GOODS_DETAIL](state, { goodsDetail }) {
+        state.goodsDetail = goodsDetail;
+    },
+    [COMMENT](state, { comment }) {
+        state.comment = comment;
+    },
 }

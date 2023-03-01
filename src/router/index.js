@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+//组件
 const Login = () => import('./../pages/Login')
 const Me = () => import('./../pages/Me')
 const Home = () => import('./../pages/Home')
@@ -8,6 +9,9 @@ const Home = () => import('./../pages/Home')
 const Profile = () => import('./../pages/Me/Children/Profile')
 const Update = () => import('./../pages/Me/Children/Update')
 const EditPassword = () => import('./../pages/Me/Children/EditPassword')
+
+const Search = () => import('./../pages/Search')
+const Goods = () => import('./../pages/Goods')
 
 Vue.use(VueRouter)
 
@@ -34,6 +38,16 @@ export default new VueRouter({
     {
       path: '/home',
       component: Home
+    },
+    {
+      path:'/search:id/:pageNum',
+      component:Search,
+      // meta:{}
+    },
+    {
+      path:'/goods/:id',
+      component:Goods,
+      // meta:{}
     }
   ]
 })

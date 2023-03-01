@@ -14,7 +14,6 @@ export const register = (username, password) => ajax(BASE_URL + 'api/register', 
 //用户名+密码登录
 export const pwdLogin = (username, password) => ajax(BASE_URL + 'api/login', { username, password }, 'POST')
 
-
 //获取登录的用户信息
 export const getUserInfo = (params) => ajax(BASE_URL + 'api/user_info', params)
 
@@ -28,11 +27,20 @@ export const changeUserPw = (id, originPw, newPw) => ajax(BASE_URL + 'api/update
 /*主页方法*/
 
 //请求主页轮播图
-export const getHomeBanner = () => ajax(BASE_URL + 'api/homebanner');
+export const getHomeBanner = () => ajax(BASE_URL + 'api/homebanner')
 
 //请求主页商品类别数
 export const getCategory = () => ajax(BASE_URL + 'api/category')
 
 //请求主页商品数据
-export const getHomeProductList = () => ajax(BASE_URL + 'api/homeproductlist');
+export const getHomeProductList = () => ajax(BASE_URL + 'api/homeproductlist')
+
+//请求商品详细数据
+export const getGoodsDetail = (params) => ajax(BASE_URL + 'api/goodsdetail', params)
+
+//请求商品的评价
+export const getComment = (params) => ajax(BASE_URL + 'api/comment', params);
+
+//评论发表
+export const postComment = (goods_id, comment_detail, comment_rating, user_id) => ajax(BASE_URL + '/api/commentpost', {goods_id, comment_detail, comment_rating, user_id}, 'POST');
 

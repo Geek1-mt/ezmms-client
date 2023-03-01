@@ -2,7 +2,7 @@
     <div class="container">
         <div id="main">
             <div class="login">
-                <h1>欢迎来到商城综合系统</h1>
+                <h1>欢迎来到商店综合系统</h1>
                 <!-- <h2>登录/注册</h2> -->
                 <el-tabs type="border-card" class="login-tabs" stretch @tab-click="handleTabsClick">
 
@@ -142,6 +142,7 @@ export default {
                             this.$notify.error({
                                 title: '登录失败',
                                 message: '用户名或密码错误',
+                                type: 'error',
                                 position: 'top-left'
                             });
                         }
