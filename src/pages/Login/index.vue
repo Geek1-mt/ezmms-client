@@ -118,7 +118,7 @@ export default {
                 if (valid) {
                     if (this.activeTab === "") {
                         //console.log(this.loginForm)
-                        //登录
+                        //发送登录请求
                         const result = await pwdLogin(this.loginForm.username, this.loginForm.password)
                         console.log(result)
                         //状态码判断

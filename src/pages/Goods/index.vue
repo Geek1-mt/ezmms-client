@@ -102,6 +102,7 @@
 
 <script>
 
+import { postComment } from '../../api';
 import { MessageBox } from 'element-ui';
 import { mapState } from 'vuex';
 
@@ -150,24 +151,48 @@ export default {
         });
         return;
       }
-      let result = await postComment(this.goodsDetail[0].goods_id, this.textarea, this.rating, this.userInfo.id);
-      if (result.success_code === 200) {
-        MessageBox({
-          type: 'success',
-          message: "发布成功",
-          showClose: true,
-        });
-        this.textarea = '';
-        this.$store.dispatch('reqGoodsComment', {
-          goodsId: this.currentGoodsId
-        });
-      } else {
-        MessageBox({
+      this.$confirm('确定要提交该条评论吗', '提示', {
+        confirmButtonText: '提交',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async () => {
+        let result = await postComment(this.goodsDetail[0].goods_id, this.textarea, this.rating, this.userInfo.id)
+        if (result.success_code === 200) {
+          this.$message({
+            type: 'success',
+            message: '评论发布成功!'
+          });
+          //清空评论栏
+          this.textarea = '';
+          //重新获取评论-更新评论栏
+          this.$store.dispatch('reqGoodsComment', {
+            goodsId: this.currentGoodsId
+          });
+          setTimeout(() => {
+            window.location.reload()
+          }, 2000);
+        }
+      }).catch(() => {
+        this.$message({
           type: 'info',
-          message: "发布失败",
-          showClose: true,
+          message: '已取消'
         });
-      }
+      });
+
+      // if (result.success_code === 200) {
+      //   MessageBox({
+      //     type: 'success',
+      //     message: "评论发布成功",
+      //     showClose: true,
+      //   });
+
+      // } else {
+      //   MessageBox({
+      //     type: 'info',
+      //     message: "发布失败",
+      //     showClose: true,
+      //   });
+      // }
     },
     // 监听商品点击
     async dealWithCellBtnClick(goods) {

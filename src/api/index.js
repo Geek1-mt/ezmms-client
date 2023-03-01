@@ -42,5 +42,5 @@ export const getGoodsDetail = (params) => ajax(BASE_URL + 'api/goodsdetail', par
 export const getComment = (params) => ajax(BASE_URL + 'api/comment', params);
 
 //评论发表
-export const postComment = (goods_id, comment_detail, comment_rating, user_id) => ajax(BASE_URL + '/api/commentpost', {goods_id, comment_detail, comment_rating, user_id}, 'POST');
+export const postComment = (goods_id, comment_detail, comment_rating, user_id) => ajax(BASE_URL + 'api/postcomment', {goods_id, comment_detail, comment_rating, user_id}, 'POST');
 
