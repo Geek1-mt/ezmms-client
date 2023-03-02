@@ -13,6 +13,7 @@ const EditPassword = () => import('./../pages/Me/Children/EditPassword')
 const Search = () => import('./../pages/Search')
 const Goods = () => import('./../pages/Goods')
 
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -47,6 +48,11 @@ export default new VueRouter({
     {
       path:'/goods/:id',
       component:Goods,
+      // meta:{}
+    },
+    {
+      path:'/search/:id/:pageNo',
+      component:Search,
       // meta:{}
     }
   ]

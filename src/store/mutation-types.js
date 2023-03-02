@@ -9,3 +9,5 @@ export const HOME_PRODUCT_LIST = 'home_product_list'; //请求商品数据
 export const GOODS_DETAIL = 'goods_detail'//商品详细数据
 
 export const COMMENT = 'comment';//评价
+
+export const CATEGORY_GOODS_LIST = 'category_goods_list'//各类商品数据

@@ -4,7 +4,8 @@ import {
     getCategory,
     getHomeProductList,
     getGoodsDetail,
-    getComment
+    getComment,
+    getCategoryGoodsList,
 } from '../api'
 
 import {
@@ -13,7 +14,8 @@ import {
     CATEGORY_LIST,
     HOME_PRODUCT_LIST,
     GOODS_DETAIL,
-    COMMENT
+    COMMENT,
+    CATEGORY_GOODS_LIST,
 
 
 } from './mutation-types'
@@ -66,5 +68,11 @@ export default {
     async reqComment({ commit }, params) {
         const result = await getComment(params);
         commit(COMMENT, { comment: result.message });
+    },
+
+    //获取各类别商品数据
+    async reqCategoryGoodsList({ commit }, params) {
+        const result = await getCategoryGoodsList(params);
+        commit(CATEGORY_GOODS_LIST, { categorygoodslist: result.message });
     },
 }

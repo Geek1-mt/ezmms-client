@@ -16,6 +16,9 @@ export default {
 
     //评论
     comment: [],
+    
+    //各类别商品数据
+    categorygoodslist: [],
 
 
 

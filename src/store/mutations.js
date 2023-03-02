@@ -7,6 +7,7 @@ import {
     HOME_PRODUCT_LIST,
     GOODS_DETAIL,
     COMMENT,
+    CATEGORY_GOODS_LIST,
 } from './mutation-types'
 
 export default {
@@ -29,4 +30,7 @@ export default {
     [COMMENT](state, { comment }) {
         state.comment = comment;
     },
+    [CATEGORY_GOODS_LIST](state, { categorygoodslist }) {
+        state.categorygoodslist = categorygoodslist
+    }
 }

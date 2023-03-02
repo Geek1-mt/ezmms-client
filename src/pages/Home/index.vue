@@ -34,16 +34,16 @@
 
             <!-- 商品展示区域 -->
             <div class="product" v-for="(cate) in categoryList" :key="cate.cate_id">
-				<div class="pro_line">
-					<h3>{{ cate.cate_name }}</h3>
-					<div><a @click.prevent="getRList(cate.cate_id)">MORE</a></div>
-				</div>
-				<div class="pro_show">
+                <div class="pro_line">
+                    <h3>{{ cate.cate_name }}</h3>
+                    <div><a @click.prevent="getRList(cate.cate_id)">MORE</a></div>
+                </div>
+                <div class="pro_show">
                     <br>
-					<ProductItem v-for="(pro) in homeproductlist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro" />
-				</div>
-			</div>
-            
+                    <ProductItem v-for="(pro) in homeproductlist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro" />
+                </div>
+            </div>
+
 
         </div>
 
@@ -60,9 +60,9 @@ import ProductItem from '../../components/ProductItem'
 export default {
 
     computed: {
-        ...mapState(['homebanner', 'categoryList','homeproductlist', 'userInfo'])
+        ...mapState(['homebanner', 'categoryList', 'homeproductlist', 'userInfo'])
     },
-    components:{
+    components: {
         ProductItem,
 
     },
@@ -106,6 +106,9 @@ export default {
                     message: '已取消'
                 });
             });
+        },
+        getRList(cate_id) {
+            this.$router.replace('/search/' + cate_id + '/1')
         }
     },
 
@@ -250,7 +253,7 @@ export default {
 .pro_line>h3 {
     display: inline-block;
     /* color: #b61313;*/
-} 
+}
 
 .pro_line>div {
     display: inline-block;
