@@ -47,3 +47,6 @@ export const postComment = (goods_id, comment_detail, comment_rating, user_id) =
 //请求各个类别下的商品数据
 export const getCategoryGoodsList = (params) => ajax(BASE_URL + 'api/categorygoodslist', params);
 
+//商品关键词搜索
+export const searchProductKeywords = (keywords) => ajax(BASE_URL + 'api/productsearch', { keywords }, 'POST');
+

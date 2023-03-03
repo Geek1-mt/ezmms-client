@@ -11,3 +11,5 @@ export const GOODS_DETAIL = 'goods_detail'//商品详细数据
 export const COMMENT = 'comment';//评价
 
 export const CATEGORY_GOODS_LIST = 'category_goods_list'//各类商品数据
+
+export const PRODUCT_SEARCH = 'product_search'//商品模糊搜索

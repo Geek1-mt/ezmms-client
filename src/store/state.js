@@ -16,9 +16,12 @@ export default {
 
     //评论
     comment: [],
-    
+
     //各类别商品数据
     categorygoodslist: [],
+
+    //商品搜索结果
+    searchresults: []
 
 
 

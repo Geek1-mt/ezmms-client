@@ -3,7 +3,6 @@
         <div id="container">
             <div class="product">
                 <div class="pro_line">
-
                     <h3 v-text="this.categoryList[this.currentCate - 1].cate_name"></h3>
                     &nbsp;
                     <el-dropdown @command="handleCommand">
@@ -135,8 +134,8 @@ export default {
     margin-bottom: 20px;
     width: 980px;
     height: 50px;
-    line-height: 50px;
-    font-size: 26px;
+    line-height: 10px;
+    font-size: 25px;
     font-family: sans-serif;
     font-weight: normal;
     color: #222;
@@ -261,13 +260,13 @@ ul.pagination li a {
 }
 
 ul.pagination li a.pag_active {
-    background-color: #c40000;
+    background-color: #39add3;
     color: white;
-    border: 1px solid #c40000;
+    border: 1px solid white;
 }
 
 ul.pagination li a:hover:not(.pag_active) {
-    background-color: #ddd;
+    background-color: #d8d5d5;
 }
 
 div.center {

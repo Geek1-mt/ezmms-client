@@ -8,6 +8,7 @@ import {
     GOODS_DETAIL,
     COMMENT,
     CATEGORY_GOODS_LIST,
+    PRODUCT_SEARCH,
 } from './mutation-types'
 
 export default {
@@ -32,5 +33,9 @@ export default {
     },
     [CATEGORY_GOODS_LIST](state, { categorygoodslist }) {
         state.categorygoodslist = categorygoodslist
+    },
+    [PRODUCT_SEARCH](state, { searchresults }) {
+        state.searchresults = searchresults
+
     }
 }

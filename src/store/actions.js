@@ -6,6 +6,7 @@ import {
     getGoodsDetail,
     getComment,
     getCategoryGoodsList,
+    searchProductKeywords,
 } from '../api'
 
 import {
@@ -16,6 +17,7 @@ import {
     GOODS_DETAIL,
     COMMENT,
     CATEGORY_GOODS_LIST,
+    PRODUCT_SEARCH
 
 
 } from './mutation-types'
@@ -75,4 +77,13 @@ export default {
         const result = await getCategoryGoodsList(params);
         commit(CATEGORY_GOODS_LIST, { categorygoodslist: result.message });
     },
+
+    //模糊搜索获取商品数据
+    async reqSearch({ commit }, { keywords }) {
+        const result = await searchProductKeywords(keywords)
+        if (result.success_code === 200) {
+            let searchresults = result.message
+            commit(PRODUCT_SEARCH, { searchresults })
+        }
+    }
 }

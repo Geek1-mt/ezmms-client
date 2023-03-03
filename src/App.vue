@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <HeaderTop v-show="$route.meta.showHeaderTop" />
+    <HeaderSearch v-show="$route.meta.showHeaderSearch" />
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -7,12 +9,18 @@
 </template>
 
 <script>
+
+//引入头部组件
+import HeaderTop from './components/HeaderTop'
+import HeaderSearch from './components/HeaderSearch'
+
 import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
   components: {
-
+    HeaderTop,
+    HeaderSearch
   },
   mounted() {
     //存储用户信息，防止强制刷新带来的数据丢失
