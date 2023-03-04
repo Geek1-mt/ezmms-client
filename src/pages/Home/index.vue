@@ -1,11 +1,11 @@
 <template>
     <div id="home">
-        <h1>这是主页面</h1>
-        <router-link to="/user">用户信息主页</router-link>
+        <h1>商店综合系统</h1>
+        <!-- <router-link to="/user">用户信息主页</router-link>
         &nbsp;
         <span>欢迎用户:{{ userInfo.user_name }}</span>
         &nbsp;
-        <el-button type="text" @click="logout" plain>点击退出</el-button>
+        <el-button type="text" @click="logout" plain>点击退出</el-button> -->
         <div id="container">
             <el-row>
                 <!-- 菜单栏目-->

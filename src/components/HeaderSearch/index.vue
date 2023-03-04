@@ -4,7 +4,7 @@
         <div class="header_search">
             <div>
                 <input type="text" placeholder="请输入商品名称" v-model="keywords" />
-                <el-button type="danger" icon="el-icon-search" @click="postSearch"></el-button>
+                <el-button type="primary" icon="el-icon-search" @click="postSearch"></el-button>
             </div>
             <p>
                 <a>商品促销中</a>
@@ -15,7 +15,7 @@
             </p>
         </div>
         <div class="shopping_bag">
-            <a @click.prevent="goShopCar"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;购物车</a>
+            <a @click.prevent="goShopCar"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;我的购物车</a>
         </div>
     </div>
 </template>
@@ -60,7 +60,7 @@ export default {
 .header_container {
     position: relative;
     width: 100%;
-    height: 140px;
+    height: 150px;
     margin: 0;
     padding: 0;
 }
@@ -111,15 +111,15 @@ export default {
     height: 35px;
     font-size: 14px;
     line-height: 35px;
-    border: 2px solid #FF0236;
+    border: 2px solid rgb(203, 177, 177);
     border-right: none;
     outline: none;
 }
 
-.header_search button.el-button.el-button--danger {
-    padding: 0;
+.header_search button.el-button.el-button--primary {
+    padding: 0px;
     width: 60px;
-    height: 35px;
+    height: 40px;
     font-size: 18px;
     border-radius: 0;
     outline: none;
@@ -151,7 +151,7 @@ export default {
     text-align: center;
     line-height: 35px;
     font-size: 12px;
-    background: #f8f9fa;
+    background: #eaeff4;
     color: red;
     cursor: pointer;
 }
@@ -165,6 +165,6 @@ export default {
 }
 
 .shopping_bag>a {
-    color: red;
+    color: rgb(0, 145, 255);
 }
 </style>

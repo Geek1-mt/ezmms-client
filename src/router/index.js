@@ -30,8 +30,9 @@ export default new VueRouter({
     {
       path: '/user',
       component: Me,
+
       children: [
-        { path: 'profile', component: Profile },
+        { path: 'profile', component: Profile, meta: { showHeaderTop: true }, },
         { path: '/user', redirect: '/user/profile' },
         { path: 'update_userinfo', component: Update },
         { path: 'update_password', component: EditPassword }
@@ -39,17 +40,13 @@ export default new VueRouter({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      meta: { showHeaderTop: true }
     },
-    // {
-    //   path: '/search:id/:pageNum',
-    //   component: Search,
-
-    // },
     {
       path: '/goods/:id',
       component: Goods,
-      // meta:{}
+      meta: { showHeaderSearch: true, showHeaderTop: true }
     },
     {
       path: '/search/:id/:pageNo',
