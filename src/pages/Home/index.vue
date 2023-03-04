@@ -1,6 +1,8 @@
 <template>
     <div id="home">
-        <h1>商店综合系统</h1>
+        <div class="home_top_container">
+            <div class="home_top">综合系统主页</div>
+        </div>
         <!-- <router-link to="/user">用户信息主页</router-link>
         &nbsp;
         <span>欢迎用户:{{ userInfo.user_name }}</span>
@@ -11,8 +13,7 @@
                 <!-- 菜单栏目-->
                 <el-col :span="4" :offset="1" class="cateList">
                     <div class="cate_img">
-                        <i class="el-icon-office-building"></i>
-                        商品类别
+                        <i class="el-icon-office-building">商品类别</i>
                     </div>
                     <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff">
                         <el-menu-item index="cate.cate_id" v-for="(cate) in categoryList" :key="cate.cate_id"
@@ -24,7 +25,7 @@
                 </el-col>
                 <!--轮播图-->
                 <el-col :span="14">
-                    <el-carousel v-if="homebanner.length > 0">
+                    <el-carousel height="320px" v-if="homebanner.length > 0">
                         <el-carousel-item v-for="(banner) in homebanner" :key="banner.id">
                             <img :src="banner.imgurl" alt="">
                         </el-carousel-item>
@@ -118,12 +119,25 @@ export default {
 <style scoped>
 #home {
     font-family: "Microsoft YaHei";
+    background-image: url("../../../public/MainPage.jpg");
+}
+
+.home_top {
+    line-height: 50px;
+    font-size: 40px;
+    height: 50px;
+    margin: 20px auto;
+}
+
+.home_top_container {
+    display: flex;
 }
 
 /*产品展示、购买、分类简介区*/
 #container {
     position: relative;
     margin: 60px auto;
+    margin-top: 0px;
     width: 100%;
     background: rgba(245, 245, 245, 0.5);
 }
@@ -134,7 +148,7 @@ export default {
 
 .el-row .cateList .cate_img {
     width: 100%;
-    text-indent: 14px;
+    text-indent: 3.6px;
     height: 40px;
     color: white;
     line-height: 40px;
@@ -145,7 +159,7 @@ export default {
 /*自动播放图片区域*/
 .el-col .el-carousel {
     height: 100%;
-    border-top: 2px solid #FF0036;
+    /* border-top: 2px solid #e9dde0; */
 }
 
 .el-carousel .el-carousel__item img {

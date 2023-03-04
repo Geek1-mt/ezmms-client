@@ -122,7 +122,7 @@ export default {
 .header_nav {
     width: 100%;
     height: 40px;
-    background: #F2F2F2;
+    background: #b9dbef;
     font-family: "Microsoft YaHei";
 
     display: flex;

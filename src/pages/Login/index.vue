@@ -102,7 +102,7 @@ export default {
             //backImg: "../../public/backImg/back1.jpg",
 
             activeTab: "",
-            // userInfo: {}, //用户信息
+            userInfo: {}, //用户信息
             //验证规则
             rules: {
                 username: [{ validator: validateUserName, trigger: 'blur' }],
@@ -123,7 +123,7 @@ export default {
                         console.log(result)
                         //状态码判断
                         if (result.success_code === 200) {
-                            // this.userInfo = result.message;
+                            this.userInfo = result.message;
                             this.loginForm.password = ''; // 密码
                             this.loginForm.username = ''; // 账号
                             this.$notify({
