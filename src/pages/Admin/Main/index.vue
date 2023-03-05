@@ -53,7 +53,7 @@ import { mapState } from 'vuex';
 import { mapActions } from 'vuex'
 import { MessageBox } from 'element-ui';
 import { adminLogout } from '../../../api'
-
+//引入bootstrap
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default {
@@ -87,6 +87,7 @@ export default {
                         message: '退出成功!'
                     });
                     this.$router.replace('/home');
+                    //刷新页面，解除bootstrap样式污染
                     window.location.reload()
                     window.localStorage.removeItem("adminInfo");
                 }
