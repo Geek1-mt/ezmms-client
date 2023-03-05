@@ -5,8 +5,11 @@ import store from './store'
 import './plugins/element.js'
 import ElementUI from 'element-ui'
 
+
+// import 'bootstrap/dist/css/bootstrap.css'
+
 //引入图片懒加载
-import Vant,{Lazyload} from 'vant';
+import Vant, { Lazyload } from 'vant';
 import 'vant/lib/index.css'
 Vue.use(Vant);
 Vue.use(Lazyload);

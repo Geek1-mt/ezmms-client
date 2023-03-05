@@ -19,8 +19,12 @@
             </div>
         </div>
         <ul>
-            <li v-if="userInfo.id">
-                <a v-if="userInfo.user_nickname">欢迎用户:<span style="font-weight:bolder">{{ userInfo.user_nickname }}</span></a>
+            <li v-if="!userInfo.id">
+                <router-link to="/login">欢迎,请登录</router-link>
+            </li>
+            <li v-else>
+                <a v-if="userInfo.user_nickname">欢迎用户:<span style="font-weight:bolder">{{ userInfo.user_nickname
+                }}</span></a>
                 <a v-else>您好,{{ userInfo.user_name | nameFormat }}</a>
                 <a @click="headerLogout">退出登录</a>
             </li>
