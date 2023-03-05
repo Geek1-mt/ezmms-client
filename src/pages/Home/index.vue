@@ -124,7 +124,7 @@ export default {
 
 .home_top {
     line-height: 50px;
-    font-size: 40px;
+    font-size: 36px;
     height: 50px;
     margin: 20px auto;
 }

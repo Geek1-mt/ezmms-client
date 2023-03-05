@@ -14,7 +14,9 @@ const Search = () => import('./../pages/Search')
 const Goods = () => import('./../pages/Goods')
 const ProductSearch = () => import('./../pages/ProductSearch')
 
-
+//后台管理员部分
+const AdminLogin = () => import('./../pages/Admin/Chidren/AdminLogin')
+const Admin = () => import('./../pages/Admin/Main')
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -57,6 +59,17 @@ export default new VueRouter({
       path: '/productsearch',
       component: ProductSearch,
       meta: { showHeaderSearch: true }
+    },
+    {
+      path: '/adminlogin',
+      component: AdminLogin
+    },
+    {
+      path: '/admin',
+      component: Admin,
+      // children: [
+      //   { path: '/admin', redirect: '/admin' }
+      // ]
     }
   ]
 })

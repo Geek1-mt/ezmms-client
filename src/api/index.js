@@ -50,3 +50,5 @@ export const getCategoryGoodsList = (params) => ajax(BASE_URL + 'api/categorygoo
 //商品关键词搜索
 export const searchProductKeywords = (keywords) => ajax(BASE_URL + 'api/productsearch', { keywords }, 'POST');
 
+//管理员登录
+export const adminLogin = (username, password) => ajax(BASE_URL + 'api/adminlogin', { username, password }, 'POST');
