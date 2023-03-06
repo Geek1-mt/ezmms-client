@@ -109,8 +109,8 @@ export default {
             });
         },
         getRList(cate_id) {
-            this.$router.replace('/search/' + cate_id + '/1')
-        }
+			this.$router.replace('/search/' + cate_id + '/1');
+		},
     },
 
 }

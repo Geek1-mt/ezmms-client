@@ -45,7 +45,7 @@
             <el-table-column label="操作">
                 <template slot-scope="props">
                     <el-button size="mini" @click="handleEdit(props.$index, props.row)">编辑</el-button>
-                    <el-button size="mini" type="danger" @click="handleDelete(props.$index, props.row)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="handleDelete(props.$index, props.row)">下架</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -82,7 +82,7 @@ export default {
         },
         //删除商品
         async handleDelete(index, row) {
-            this.$confirm('您确定要删除该商品吗?', '提示', {
+            this.$confirm('确定要下架该商品吗?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
@@ -91,7 +91,7 @@ export default {
                 if (result.success_code === 200) {
                     this.$message({
                         type: 'success',
-                        message: '已删除'
+                        message: '已下架该商品'
                     });
                 }
                 window.location.reload()

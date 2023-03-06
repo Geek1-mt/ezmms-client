@@ -25,7 +25,7 @@
                 </el-select>
             </div>
             <div class="goods-item">
-                <span>价格(￥)</span>
+                <span>价格(￥)*100</span>
                 <el-input type="number" placeholder="请输入价格" v-model="goodsInfo.price" clearable style="width:100px">
                 </el-input>
             </div>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getAllgoods } from '../../../api';
+import { getAllgoods ,updateGoodsInfo} from '../../../api';
 export default {
     data() {
         return {
@@ -81,7 +81,7 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(async () => {
-                let result = await changeGoodsInfo(this.goodsInfo);
+                let result = await updateGoodsInfo(this.goodsInfo);
                 if (result.success_code === 200) {
                     this.$message({
                         type: 'success',

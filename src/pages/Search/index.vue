@@ -64,8 +64,9 @@ export default {
         }
     },
     created() {
-        this.activeIndex = Number(this.$route.params.id)
-        this.currentCate = Number(this.$route.params.pageNo)
+        //初始化路由页码
+        this.currentCate = Number(this.$route.params.id)
+        this.activeIndex = Number(this.$route.params.pageNo)
         //请求类别数据
         this.$store.dispatch('reqCategory')
         // 请求当前页码的商品
@@ -76,8 +77,6 @@ export default {
         });
         //请求当前用户信息
         this.$store.dispatch('getUserInfo');
-
-
     },
     watch: {
         $route() {

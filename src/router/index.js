@@ -20,6 +20,7 @@ const Admin = () => import('./../pages/Admin/Main')
 const GoodsManage = () => import('./../pages/Admin/Chidren/GoodsManage')
 const UserList = () => import('./../pages/Admin/Chidren/UserList')
 const GoodsUpdate = () => import('./../pages/Admin/Chidren/GoodsUpdate')
+const GoodsAdd = () => import('./../pages/Admin/Chidren/GoodsAdd')
 
 Vue.use(VueRouter)
 
@@ -38,10 +39,10 @@ export default new VueRouter({
       component: Me,
 
       children: [
-        { path: 'profile', component: Profile, meta: { showHeaderTop: true }, },
+        { path: 'profile', component: Profile, meta: { showHeaderTop: true } },
         { path: '/user', redirect: '/user/profile' },
-        { path: 'update_userinfo', component: Update },
-        { path: 'update_password', component: EditPassword }
+        { path: 'update_userinfo', component: Update, meta: { showHeaderTop: true } },
+        { path: 'update_password', component: EditPassword, meta: { showHeaderTop: true } }
       ]
     },
     {
@@ -75,6 +76,8 @@ export default new VueRouter({
         { path: 'goodsmanage', component: GoodsManage },
         { path: 'userlist', component: UserList },
         { path: 'updategoods', component: GoodsUpdate },
+        { path: 'goodsadd', component: GoodsAdd },
+        //初始子路径配置
         { path: '/admin', redirect: '/admin/goodsmanage' }
       ]
     }

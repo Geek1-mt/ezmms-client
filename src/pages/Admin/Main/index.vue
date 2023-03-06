@@ -25,7 +25,7 @@
                                 <i class="el-icon-document-copy"></i>
                                 <span slot="title">商品信息</span>
                             </el-menu-item>
-                            <el-menu-item index="2" @click="goTo('/admin/addgoods')">
+                            <el-menu-item index="2" @click="goTo('/admin/goodsadd')">
                                 <i class="el-icon-edit"></i>
                                 <span slot="title">商品上架</span>
                             </el-menu-item>
