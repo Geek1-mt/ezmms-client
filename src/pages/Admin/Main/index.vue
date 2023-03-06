@@ -1,8 +1,8 @@
 <template>
     <div id="admin">
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-            <router-link class="navbar-brand col-sm-3 col-md-2 mr-0" to="/home">商城</router-link>
-            <span class="nav_title">欢迎来到后台管理界面</span>
+            <span class="navbar-brand col-sm-3 col-md-2 mr-0" >检视栏</span>
+            <span class="nav_title">欢迎来到系统后台管理界面</span>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <router-link class="nav-link" to="/home">返回商城</router-link>
@@ -29,9 +29,9 @@
                                 <i class="el-icon-edit"></i>
                                 <span slot="title">商品上架</span>
                             </el-menu-item>
-                            <el-menu-item index="3" @click="goTo('/admin/adminusers')">
-                                <i class="el-icon-collection-tag"></i>
-                                <span>用户管理</span>
+                            <el-menu-item index="3" @click="goTo('/admin/userlist')">
+                                <i class="el-icon-user"></i>
+                                <span>用户列表</span>
                             </el-menu-item>
                             <el-menu-item index="4" @click="goTo('/admin/adminsales')">
                                 <i class="el-icon-collection-tag"></i>
@@ -57,8 +57,8 @@ import { adminLogout } from '../../../api'
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default {
-    computed:{
-        ...mapState[('userInfo')]
+    computed: {
+        ...mapState(['userInfo'])
     },
     created() {
         let result = window.localStorage.getItem("adminInfo");
@@ -69,9 +69,10 @@ export default {
                 showClose: true,
             });
             this.$router.replace('/adminlogin');
-        } else {
-            window.localStorage.removeItem("userInfo");
         }
+        // else {
+        //     window.localStorage.removeItem("userInfo");
+        // }
     },
     methods: {
         logout() {

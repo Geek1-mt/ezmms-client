@@ -38,6 +38,18 @@ export default {
   methods: {
     ...mapActions(['syncUserInfo']),
   },
+  /**
+   * 数据持久化存储
+   */
+  created() {
+    if (window.localStorage.getItem("list")) {
+      this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(window.localStorage.getItem("list"))))
+    }
+
+    window.addEventListener("beforeunload", () => {
+      window.localStorage.setItem("list", JSON.stringify(this.$store.state))
+    })
+  },
 
   // created() {
   //   // 在页面加载时读取sessionStorage

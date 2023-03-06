@@ -18,7 +18,8 @@ const ProductSearch = () => import('./../pages/ProductSearch')
 const AdminLogin = () => import('./../pages/Admin/Chidren/AdminLogin')
 const Admin = () => import('./../pages/Admin/Main')
 const GoodsManage = () => import('./../pages/Admin/Chidren/GoodsManage')
-
+const UserList = () => import('./../pages/Admin/Chidren/UserList')
+const GoodsUpdate = () => import('./../pages/Admin/Chidren/GoodsUpdate')
 
 Vue.use(VueRouter)
 
@@ -72,6 +73,8 @@ export default new VueRouter({
       component: Admin,
       children: [
         { path: 'goodsmanage', component: GoodsManage },
+        { path: 'userlist', component: UserList },
+        { path: 'updategoods', component: GoodsUpdate },
         { path: '/admin', redirect: '/admin/goodsmanage' }
       ]
     }

@@ -61,3 +61,9 @@ export const adminLogout = () => ajax(BASE_URL + 'api/adminlogout');
 //请求所有商品的数据
 export const getAllgoods = () => ajax(BASE_URL + 'api/getallgoods');
 
+//删除商品
+export const deleteGoods = (goods_id) => ajax(BASE_URL + 'api/delete_goods', { goods_id }, 'POST');
+//请求所有用户的数据
+export const getAllUsers = () => ajax(BASE_URL + 'api/allusers');
+
+

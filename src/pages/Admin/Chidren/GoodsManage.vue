@@ -14,7 +14,7 @@
                             <span>{{ category[props.row.category - 1] }}</span>
                         </el-form-item>
                         <el-form-item label="商品价格">
-                            <span>{{ (props.row.price / 100) | priceFormat }}</span>
+                            <span>{{ (props.row.price / 100) + '￥' }}</span>
                         </el-form-item>
                         <el-form-item label="商品库存">
                             <span>{{ props.row.counts }}</span>
@@ -32,7 +32,15 @@
             </el-table-column>
             <el-table-column label="商品名称" prop="short_name">
             </el-table-column>
-            <el-table-column label="描述" prop="goods_name">
+            <el-table-column label="商品价格">
+                <!-- slot-scope为每行对象 -->
+                <template slot-scope="scope">
+                    <span>
+                        {{ scope.row.price / 100 + '￥' }}
+                    </span>
+                </template>
+            </el-table-column>
+            <el-table-column label="库存数量" prop="counts">
             </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="props">
@@ -47,7 +55,7 @@
 </template>
   
 <script>
-import { getAllgoods, deleteRecomGoods } from './../../../api/index';
+import { getAllgoods, deleteGoods } from './../../../api/index';
 import { mapState } from 'vuex';
 import { mapActions } from 'vuex'
 
@@ -56,37 +64,41 @@ export default {
         return {
             category: ['图书影像', '家居生活', '服饰箱包', '电子数码', '美食宝典'],
             currentIndex: 1,
-            pageSize: 6,
+            pageSize: 8,
             tableData: [],
             tempData: [],
+
         }
     },
     mounted() {
         this.getAllGoods();
     },
     methods: {
+        //编辑商品
         handleEdit(index, row) {
-            console.log(index, row);
+            //console.log(index, row);
             window.localStorage.setItem('goodsInfo', JSON.stringify(row));
-            this.$router.replace('/admin/adminupdate');
+            this.$router.replace('/admin/updategoods');
         },
+        //删除商品
         async handleDelete(index, row) {
-            this.$confirm('您确定永久删除该商品吗?', '提示', {
+            this.$confirm('您确定要删除该商品吗?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(async () => {
-                let result = await deleteRecomGoods(row.goods_id);
+                let result = await deleteGoods(row.goods_id);
                 if (result.success_code === 200) {
                     this.$message({
                         type: 'success',
                         message: '已删除'
                     });
                 }
+                window.location.reload()
             }).catch(() => {
                 this.$message({
                     type: 'info',
-                    message: '已取消删除'
+                    message: '已取消操作'
                 });
             });
         },
