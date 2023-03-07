@@ -50,6 +50,22 @@ export const getCategoryGoodsList = (params) => ajax(BASE_URL + 'api/categorygoo
 //商品关键词搜索
 export const searchProductKeywords = (keywords) => ajax(BASE_URL + 'api/productsearch', { keywords }, 'POST');
 
+/**购物车方法 */
+
+//添加购物车物品
+export const addGoodsToCart = (user_id, goods_id, goods_name, thumb_url, price, buy_count, counts) => ajax(BASE_URL + 'api/cart_addgoods', { user_id, goods_id, goods_name, thumb_url, price, buy_count, counts }, 'POST');
+
+// 请求购物车的数据
+export const getCartGoods = (params) => ajax(BASE_URL + 'api/cart_goods', params);
+
+// 删除单个商品
+export const deleteCartGood = (goods_id, user_id) => ajax(BASE_URL + 'api/delete_cart_good', { goods_id, user_id }, 'POST');
+
+// 删除所有商品
+export const deleteCartAllGoods = (user_id) => ajax(BASE_URL + 'api/delete_cart_all_goods', { user_id }, 'POST');
+
+
+
 /**管理员方法 */
 
 //管理员登录

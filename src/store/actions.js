@@ -7,6 +7,10 @@ import {
     getComment,
     getCategoryGoodsList,
     searchProductKeywords,
+    getCartGoods,
+    deleteCartGood,
+    deleteCartAllGoods,
+
 } from '../api'
 
 import {
@@ -17,8 +21,12 @@ import {
     GOODS_DETAIL,
     COMMENT,
     CATEGORY_GOODS_LIST,
-    PRODUCT_SEARCH
-
+    PRODUCT_SEARCH,
+    CART_GOODS_LIST,
+    SELECTED_SINGLE_GOODS,
+    SELECTED_ALL_GOODS,
+    DEL_CART_ALL_GOODS,
+    DEL_CART_SINGLE_GOOD
 
 } from './mutation-types'
 
@@ -30,6 +38,7 @@ export default {
 
     //异步获取用户信息
     async getUserInfo({ commit }, params) {
+
         let userInfo = {};
         const result = await getUserInfo(params);
         if (result.success_code === 200) {
@@ -85,5 +94,40 @@ export default {
             let searchresults = result.message
             commit(PRODUCT_SEARCH, { searchresults })
         }
-    }
+    },
+
+    //请求购物车数据
+    async reqCartGoods({ commit }, params) {
+        const result = await getCartGoods(params);
+        if (result.success_code === 200) {
+            commit(CART_GOODS_LIST, { cartgoods: result.message })
+        }
+    },
+
+    //选择所有商品
+    selectedAll({ commit }, { isSelectedAll }) {
+        commit(SELECTED_ALL_GOODS, { isSelectedAll });
+    },
+
+    //选择单个商品
+    singleSelected({ commit }, { goods }) {
+        commit(SELECTED_SINGLE_GOODS, { goods });
+    },
+
+    // 删除单个商品
+    async delSingleGoods({ commit }, { goods, user_id }) {
+        const result = await deleteCartGood(goods.goods_id, user_id);
+        if (result.success_code === 200) {
+            commit(DEL_CART_SINGLE_GOOD, { goods });
+        }
+    },
+
+    // 删除所有商品
+    async delAllGoods({ commit }, { user_id }) {
+        const result = await deleteCartAllGoods(user_id);
+        if (result.success_code === 200) {
+            commit(DEL_CART_ALL_GOODS);
+        }
+    },
+
 }

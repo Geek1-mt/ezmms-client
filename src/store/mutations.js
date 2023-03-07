@@ -9,6 +9,12 @@ import {
     COMMENT,
     CATEGORY_GOODS_LIST,
     PRODUCT_SEARCH,
+    CART_GOODS_LIST,
+
+    SELECTED_SINGLE_GOODS,
+    SELECTED_ALL_GOODS,
+    DEL_CART_SINGLE_GOOD,
+    DEL_CART_ALL_GOODS
 } from './mutation-types'
 
 export default {
@@ -37,5 +43,39 @@ export default {
     [PRODUCT_SEARCH](state, { searchresults }) {
         state.searchresults = searchresults
 
-    }
+    },
+    [CART_GOODS_LIST](state, { cartgoods }) {
+        state.cartgoods = cartgoods;
+    },
+
+    [SELECTED_ALL_GOODS](state, { isSelectedAll }) {
+        state.cartgoods.forEach((goods) => {
+            if (goods.checked) {
+                // 该属性存在
+                goods.checked = !isSelectedAll;
+            } else {
+                Vue.set(goods, 'checked', !isSelectedAll);
+            }
+        });
+    },
+
+    [SELECTED_SINGLE_GOODS](state, { goods }) {
+        const index = state.cartgoods.indexOf(goods);
+        if (!goods.checked) {
+            //Vue.set(goods, 'checked', true);
+            state.cartgoods[index].checked = true;
+        } else {
+            state.cartgoods[index].checked = !state.cartgoods[index].checked;
+        }
+    },
+
+    [DEL_CART_SINGLE_GOOD](state, { goods }) {
+        goods.buy_count = 0;
+        const index = state.cartgoods.indexOf(goods);
+        state.cartgoods.splice(index, 1);
+    },
+
+    [DEL_CART_ALL_GOODS](state) {
+        state.cartgoods = [];
+    },
 }

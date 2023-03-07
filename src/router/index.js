@@ -14,6 +14,8 @@ const Search = () => import('./../pages/Search')
 const Goods = () => import('./../pages/Goods')
 const ProductSearch = () => import('./../pages/ProductSearch')
 
+const ShopCart = () => import('./../pages/ShopCart')
+
 //后台管理员部分
 const AdminLogin = () => import('./../pages/Admin/Chidren/AdminLogin')
 const Admin = () => import('./../pages/Admin/Main')
@@ -37,7 +39,6 @@ export default new VueRouter({
     {
       path: '/user',
       component: Me,
-
       children: [
         { path: 'profile', component: Profile, meta: { showHeaderTop: true } },
         { path: '/user', redirect: '/user/profile' },
@@ -68,6 +69,11 @@ export default new VueRouter({
     {
       path: '/adminlogin',
       component: AdminLogin
+    },
+    {
+      path: '/shopcart',
+      component: ShopCart,
+      meta: { showHeaderTop: true }
     },
     {
       path: '/admin',

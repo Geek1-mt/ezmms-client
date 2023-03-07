@@ -15,7 +15,7 @@
             </p>
         </div>
         <div class="shopping_bag">
-            <a @click.prevent="goShopCar"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;我的购物车</a>
+            <a @click.prevent="goShopCart"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;我的购物车</a>
         </div>
     </div>
 </template>
@@ -35,9 +35,9 @@ export default {
         ...mapState(['userInfo'])
     },
     methods: {
-        goShopCar() {
+        goShopCart() {
             if (this.userInfo.id) {
-                this.$router.replace('/shoppingcart');
+                this.$router.replace('/shopcart');
             }
 
         },

@@ -14,6 +14,9 @@ import 'vant/lib/index.css'
 Vue.use(Vant);
 Vue.use(Lazyload);
 
+//全局过滤器
+import './config/filters'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

@@ -14,3 +14,12 @@ export const CATEGORY_GOODS_LIST = 'category_goods_list'//各类商品数据
 
 export const PRODUCT_SEARCH = 'product_search'//商品模糊搜索
 
+export const CART_GOODS_LIST = 'cart_goods_list'; //购物车数据
+
+export const SELECTED_ALL_GOODS = 'selected_all_goods'; //选中所有商品
+
+export const SELECTED_SINGLE_GOODS = 'selected_single_goods'; //选中单个商品
+
+export const DEL_CART_SINGLE_GOOD = 'del_cart_single_good'; //删除单个商品
+
+export const DEL_CART_ALL_GOODS = 'del_cart_all_goods'; //删除所有商品

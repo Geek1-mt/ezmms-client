@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <div class="home_top_container">
-            <div class="home_top">综合系统主页</div>
+            <div class="home_top">主页广场</div>
         </div>
         <!-- <router-link to="/user">用户信息主页</router-link>
         &nbsp;
@@ -44,10 +44,28 @@
                     <ProductItem v-for="(pro) in homeproductlist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro" />
                 </div>
             </div>
-
-
+            <!-- 尾部 -->
+            <div id="footer">
+                <img src="../../../public/footer.png" />
+                <div class="footer_text"></div>
+            </div>
+            
         </div>
-
+        <span style="font-weight:bold;color:royalblue">↑ 点击右侧图标返回顶部 ↑</span>
+        <el-backtop :bottom="100">
+            <div style="{
+                    height: 100%;
+                    width: 100%;
+                    background-color: #f2f5f6;
+                    box-shadow: 0 0 6px rgba(0,0,0, .12);
+                    text-align: center;
+                    line-height: 40px;
+                    border-radius:50%;
+                    color: #1989fa;
+                  }">
+                ↑
+            </div>
+        </el-backtop>
     </div>
 </template>
 
@@ -109,8 +127,8 @@ export default {
             });
         },
         getRList(cate_id) {
-			this.$router.replace('/search/' + cate_id + '/1');
-		},
+            this.$router.replace('/search/' + cate_id + '/1');
+        },
     },
 
 }
@@ -127,6 +145,7 @@ export default {
     font-size: 36px;
     height: 50px;
     margin: 20px auto;
+    font-weight:bold;
 }
 
 .home_top_container {
@@ -262,6 +281,7 @@ export default {
     font-weight: normal;
     color: #222;
     margin-bottom: 20px;
+    
 }
 
 .pro_line>h3 {
@@ -314,15 +334,16 @@ export default {
 
 /*底部对商城的补充说明*/
 #footer {
-    margin-top: -80px;
+    margin-top: 80px;
     width: 100%;
-    height: 200px;
+    height: 150px;
     background: #F0F3EF;
 }
 
 #footer>img {
     display: block;
-    margin: 0 auto;
+    margin-bottom: 16.5px;
+
 }
 
 #footer>.footer_text {

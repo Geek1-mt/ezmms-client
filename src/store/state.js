@@ -21,7 +21,10 @@ export default {
     categorygoodslist: [],
 
     //商品搜索结果
-    searchresults: []
+    searchresults: [],
+
+    //购物车数据
+    cartgoods: [],
 
 
 

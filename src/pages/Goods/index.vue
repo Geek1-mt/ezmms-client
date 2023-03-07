@@ -102,7 +102,7 @@
 
 <script>
 
-import { postComment } from '../../api';
+import { postComment,addGoodsToCart } from '../../api';
 import { MessageBox } from 'element-ui';
 import { mapState } from 'vuex';
 
@@ -194,7 +194,7 @@ export default {
           });
           let user_id = this.userInfo.id;
           // 请求商品数据
-          this.$store.dispatch('reqCartsGoods', { user_id });
+          this.$store.dispatch('reqCartGoods', { user_id });
           this.shopNum = 1;
         }
       }
