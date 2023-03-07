@@ -1,6 +1,6 @@
 <template>
     <div id="my-balance">
-        用户：<span>{{ userInfo.user_nickname||'暂无' }}</span>
+        用户：<span>{{ userInfo.user_nickname || '暂无' }}</span>
         <br><br><br>
         您当前的余额为：<span style="font-style:italic">{{ userInfo.user_balance || '暂无' }}￥</span>
         <br><br>
@@ -28,9 +28,7 @@ export default {
     methods: {
         goTo(path) {
             this.$router.replace(path);
-        },
-
-
+        }
     }
 }
 
@@ -75,7 +73,8 @@ p {
     width: 100px;
     outline: none;
 }
-span{
+
+span {
     font-weight: bold;
 }
 </style>

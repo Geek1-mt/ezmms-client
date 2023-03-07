@@ -47,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="pro_box" v-else>购物车里空空如也</div>
+            <div class="pro_box" v-else>购物车为空，快快添加商品吧~</div>
         </div>
         <div id="footer">
             <div class="foot_select">

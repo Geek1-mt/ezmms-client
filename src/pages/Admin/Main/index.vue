@@ -1,7 +1,7 @@
 <template>
     <div id="admin">
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-            <span class="navbar-brand col-sm-3 col-md-2 mr-0" >检视栏</span>
+            <span class="navbar-brand col-sm-3 col-md-2 mr-0">检视栏</span>
             <span class="nav_title">欢迎来到系统后台管理界面</span>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
@@ -33,10 +33,10 @@
                                 <i class="el-icon-user"></i>
                                 <span>用户列表</span>
                             </el-menu-item>
-                            <el-menu-item index="4" @click="goTo('/admin/adminsales')">
+                            <!-- <el-menu-item index="4" @click="goTo('/admin/adminsales')">
                                 <i class="el-icon-collection-tag"></i>
-                                <span>订单管理</span>
-                            </el-menu-item>
+                                <span>财务中心</span>
+                            </el-menu-item> -->
                         </el-menu>
                     </div>
                 </nav>
@@ -89,7 +89,9 @@ export default {
                     });
                     this.$router.replace('/home');
                     //刷新页面，解除bootstrap样式污染
-                    window.location.reload()
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 3000);
                     window.localStorage.removeItem("adminInfo");
                 }
             }).catch(() => {

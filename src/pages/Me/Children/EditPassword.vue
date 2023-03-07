@@ -1,5 +1,4 @@
 <template>
-
     <div id="edit-pw">
         <h2>修改密码</h2>
         <el-input placeholder="请输入原密码" v-model="originPw" show-password clearable></el-input>

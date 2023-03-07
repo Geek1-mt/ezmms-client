@@ -23,6 +23,8 @@ export const changeUserInfo = (params) => ajax(BASE_URL + 'api/update_user_info'
 // 修改用户密码
 export const changeUserPw = (id, originPw, newPw) => ajax(BASE_URL + 'api/update_user_password', { id, originPw, newPw }, 'POST');
 
+//用户余额充值
+export const recharge = (id, originBl, chargeNum) => ajax(BASE_URL + 'api/recharge', { id, originBl, chargeNum }, 'POST')
 
 /*主页方法*/
 
