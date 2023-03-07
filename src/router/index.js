@@ -9,6 +9,8 @@ const Home = () => import('./../pages/Home')
 const Profile = () => import('./../pages/Me/Children/Profile')
 const Update = () => import('./../pages/Me/Children/Update')
 const EditPassword = () => import('./../pages/Me/Children/EditPassword')
+const Balance = () => import('./../pages/Me/Children/Balance')
+const Recharge = () => import('./../pages/Me/Children/Recharge')
 
 const Search = () => import('./../pages/Search')
 const Goods = () => import('./../pages/Goods')
@@ -43,7 +45,9 @@ export default new VueRouter({
         { path: 'profile', component: Profile, meta: { showHeaderTop: true } },
         { path: '/user', redirect: '/user/profile' },
         { path: 'update_userinfo', component: Update, meta: { showHeaderTop: true } },
-        { path: 'update_password', component: EditPassword, meta: { showHeaderTop: true } }
+        { path: 'update_password', component: EditPassword, meta: { showHeaderTop: true } },
+        { path: 'balance', component: Balance, meta: { showHeaderTop: true } },
+        { path: 'rechargecenter', component: Recharge, meta: { showHeaderTop: true } }
       ]
     },
     {
