@@ -98,7 +98,7 @@ export default {
                             this.adminInfo.user_name = this.loginForm.username
                             this.$router.replace('/admin');
                             window.localStorage.setItem("adminInfo", JSON.stringify(this.adminInfo));
-                            window.localStorage.removeItem("userInfo");
+                            //window.localStorage.removeItem("userInfo");
 
                         } else {
                             this.$notify.error({

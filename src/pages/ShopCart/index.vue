@@ -70,7 +70,7 @@
                     <span class="txt">件</span>
                 </div>
                 <div class="price-sum">
-                    <span class="txt">合计(不含运费):</span>
+                    <span class="txt">合计: </span>
                     <strong class="selected_price" style="font-style:italic">{{ totalPrice + '￥' }}</strong>
                 </div>
                 <div class="btn-area">
@@ -464,7 +464,7 @@ export default {
 }
 
 .btn-area>.btn-sumbit.btn-allow {
-    background: #f22d00;
+    background: #547fcf;
     cursor: pointer;
 }
 </style>

@@ -41,15 +41,15 @@ export default {
   /**
    * 数据持久化存储
    */
-  created() {
-    if (window.localStorage.getItem("list")) {
-      this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(window.localStorage.getItem("list"))))
-    }
+  // created() {
+  //   if (window.localStorage.getItem("list")) {
+  //     this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(window.localStorage.getItem("list"))))
+  //   }
 
-    window.addEventListener("beforeunload", () => {
-      window.localStorage.setItem("list", JSON.stringify(this.$store.state))
-    })
-  },
+  //   window.addEventListener("beforeunload", () => {
+  //     window.localStorage.setItem("list", JSON.stringify(this.$store.state))
+  //   })
+  // },
 
   // created() {
   //   // 在页面加载时读取sessionStorage
