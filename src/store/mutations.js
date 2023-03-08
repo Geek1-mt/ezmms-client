@@ -14,7 +14,8 @@ import {
     SELECTED_SINGLE_GOODS,
     SELECTED_ALL_GOODS,
     DEL_CART_SINGLE_GOOD,
-    DEL_CART_ALL_GOODS
+    DEL_CART_ALL_GOODS,
+    CHANGE_GOODS_COUNT
 } from './mutation-types'
 
 export default {
@@ -77,5 +78,10 @@ export default {
 
     [DEL_CART_ALL_GOODS](state) {
         state.cartgoods = [];
+    },
+
+    [CHANGE_GOODS_COUNT](state, { goods, count }) {
+        const index = state.cartgoods.indexOf(goods);
+        state.cartgoods[index].buy_count = count;
     },
 }

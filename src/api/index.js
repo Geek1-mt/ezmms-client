@@ -37,6 +37,9 @@ export const getCategory = () => ajax(BASE_URL + 'api/category')
 //请求主页商品数据
 export const getHomeProductList = () => ajax(BASE_URL + 'api/homeproductlist')
 
+
+/*商品页方法 */
+
 //请求商品详细数据
 export const getGoodsDetail = (params) => ajax(BASE_URL + 'api/goodsdetail', params)
 
@@ -52,6 +55,9 @@ export const getCategoryGoodsList = (params) => ajax(BASE_URL + 'api/categorygoo
 //商品关键词搜索
 export const searchProductKeywords = (keywords) => ajax(BASE_URL + 'api/productsearch', { keywords }, 'POST');
 
+//更新商品库存
+export const updateGoodsStorage = (id, goods_id, counts, shopNum) => ajax(BASE_URL + 'api/update_goods_storage', { id, goods_id, counts, shopNum }, 'POST')
+
 /**购物车方法 */
 
 //添加购物车物品
@@ -65,6 +71,12 @@ export const deleteCartGood = (goods_id, user_id) => ajax(BASE_URL + 'api/delete
 
 // 删除所有商品
 export const deleteCartAllGoods = (user_id) => ajax(BASE_URL + 'api/delete_cart_all_goods', { user_id }, 'POST');
+
+// 单个商品数量的改变
+export const changeGoodsCount = (goods_id, count, user_id) => ajax(BASE_URL + 'api/change_goods_count', { goods_id, count, user_id }, 'POST');
+
+// 购物车商品结算
+export const settlement = (id, user_balance, totalPrice) => ajax(BASE_URL + 'api/cart_settlement', { id, user_balance, totalPrice }, 'POST')
 
 
 

@@ -102,7 +102,7 @@
 
 <script>
 
-import { postComment,addGoodsToCart } from '../../api';
+import { postComment, addGoodsToCart, updateGoodsStorage } from '../../api';
 import { MessageBox } from 'element-ui';
 import { mapState } from 'vuex';
 
@@ -131,6 +131,7 @@ export default {
   watch: {
     $route() {
       this.currentGoodsId = Number(this.$route.params.id);
+      //请求当前物品详细数据
       this.$store.dispatch('reqGoodsDetail', {
         goodsNo: this.currentGoodsId
       });
@@ -178,7 +179,7 @@ export default {
           message: '已取消'
         });
       });
-      
+
     },
     // 监听商品点击
     async dealWithCellBtnClick(goods) {
@@ -195,7 +196,20 @@ export default {
           let user_id = this.userInfo.id;
           // 请求商品数据
           this.$store.dispatch('reqCartGoods', { user_id });
-          this.shopNum = 1;
+
+
+          //更新该商品库存
+          let result2 = await updateGoodsStorage(this.userInfo.id, goods.goods_id, goods.counts, this.shopNum)
+          // console.log(this.shopNum)
+          if (result2.success_code === 200) {
+            //重置商品数量选择框
+            this.shopNum = 1;
+            this.$store.dispatch('reqGoodsDetail', {
+              goodsNo: this.currentGoodsId
+            });
+          }
+
+
         }
       }
     }

@@ -10,6 +10,7 @@ import {
     getCartGoods,
     deleteCartGood,
     deleteCartAllGoods,
+    changeGoodsCount,
 
 } from '../api'
 
@@ -26,7 +27,8 @@ import {
     SELECTED_SINGLE_GOODS,
     SELECTED_ALL_GOODS,
     DEL_CART_ALL_GOODS,
-    DEL_CART_SINGLE_GOOD
+    DEL_CART_SINGLE_GOOD,
+    CHANGE_GOODS_COUNT
 
 } from './mutation-types'
 
@@ -127,6 +129,14 @@ export default {
         const result = await deleteCartAllGoods(user_id);
         if (result.success_code === 200) {
             commit(DEL_CART_ALL_GOODS);
+        }
+    },
+
+    // 单个商品数量的改变
+    async updateGoodsCount({ commit }, { goods, count, user_id }) {
+        const result = await changeGoodsCount(goods.goods_id, count, user_id);
+        if (result.success_code === 200) {
+            commit(CHANGE_GOODS_COUNT, { goods, count });
         }
     },
 

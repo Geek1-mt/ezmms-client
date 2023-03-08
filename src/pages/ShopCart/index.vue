@@ -3,7 +3,7 @@
         <div id="content">
             <div class="header">
                 <!-- <img src="./../../common/img/logo-round.png" class="header_logo" /> -->
-                <span>购物车</span>
+                <span>我的购物车</span>
             </div>
             <div class="cont_title">
                 <span>全部商品</span>
@@ -55,8 +55,13 @@
                     @click.stop="selectedAll(isSelectedAll)" />
                 <label for="foot_selectAll">全选</label>
             </div>
+
             <div class="foot_op">
                 <a class="foot_remove" @click.prevent="emptyCart">清空购物车</a>
+            </div>
+            <div>
+                &nbsp;&nbsp;
+                账户余额:{{ (this.userInfo.user_balance) / 100.0 + '￥' }}
             </div>
             <div class="foot_total">
                 <div class="amout-sum">
@@ -65,11 +70,12 @@
                     <span class="txt">件</span>
                 </div>
                 <div class="price-sum">
-                    <span class="txt">合计（不含运费）：</span>
-                    <strong class="selected_price">{{ totalPrice | moneyFormat(totalPrice) }}</strong>
+                    <span class="txt">合计(不含运费):</span>
+                    <strong class="selected_price" style="font-style:italic">{{ totalPrice + '￥' }}</strong>
                 </div>
                 <div class="btn-area">
-                    <a class="btn-sumbit" :class="{ 'btn-allow': totalAmount }">结&nbsp;算</a>
+                    <a class="btn-sumbit" :class="{ 'btn-allow': totalAmount || totalPrice }"
+                        @click="cartSettlement">结&nbsp;算</a>
                 </div>
             </div>
         </div>
@@ -80,6 +86,7 @@
 import { mapState } from 'vuex';
 import { mapActions } from 'vuex'
 import { MessageBox } from 'element-ui';
+import { settlement } from '../../api';
 
 export default {
     data() {
@@ -185,6 +192,37 @@ export default {
                 });
             });
         },
+
+        //8.结算商品
+        async cartSettlement() {
+            if (!this.totalPrice) {
+                this.$message({
+                    type: 'warning',
+                    message: '购物车为空或未选中商品！'
+                })
+            } else {
+                let result = await settlement(this.userInfo.id, this.userInfo.user_balance, this.totalPrice)
+                if (result.success_code === 200) {
+                    this.$message({
+                        type: 'success',
+                        message: '结算商品成功！'
+                    })
+
+                    //更新用户数据
+                    this.$store.dispatch('getUserInfo', { user_id: this.userInfo.id });
+
+                    //清空购物车
+                    setTimeout(() => {
+                        this.$store.dispatch('delAllGoods', { user_id: this.userInfo.id });
+                    }, 1500);
+
+                } else {
+                    this.$message.error(result.message)
+                    console.log(result)
+                }
+            }
+
+        }
     },
 }
 </script>
@@ -342,7 +380,7 @@ export default {
     position: fixed;
     bottom: 0;
     left: 10%;
-    background: #E5E5E5;
+    background: #64c6e9;
     z-index: 9999;
 }
 

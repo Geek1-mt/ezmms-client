@@ -2,8 +2,8 @@
     <div id="user_recharge">
 
         <h2>充值中心</h2>
-        <el-input placeholder="请输入充值金额(￥)" v-model="chargeNum" type="number"></el-input>
-        <p>提示:充值过程约需3秒，请耐心等待</p>
+        <el-input placeholder="请输入充值金额(单次充值额度最低10￥)" v-model="chargeNum" type="number"></el-input>
+        <p>提示:充值过程约需3秒，请耐心等待，充值后请查验余额</p>
         <div class="btn-section">
             <el-button type="primary" @click="goTo('/user/balance')">查看余额</el-button>
             <el-button type="success" @click="submitCharge">点击充值</el-button>
@@ -31,18 +31,20 @@ export default {
             this.$router.replace(path)
         },
         async submitCharge() {
-            if (!this.chargeNum) {
+            if (this.chargeNum < 10) {
                 this.$message({
                     type: 'warning',
-                    message: '充值金额不能为0'
+                    message: '充值金额低于10￥'
                 })
             } else {
                 let result = await recharge(this.userInfo.id, this.userInfo.user_balance, this.chargeNum)
                 if (result.success_code === 200) {
-                    this.$message({
-                        type: 'success',
-                        message: '充值成功！'
-                    });
+                    setTimeout(() => {
+                        this.$message({
+                            type: 'success',
+                            message: '充值成功！'
+                        });
+                    }, 3000);
                     //更新本地用户数据
                     this.$store.dispatch('getUserInfo', { user_id: this.userInfo.id })
                     this.chargeNum = null

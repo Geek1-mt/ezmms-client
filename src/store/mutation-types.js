@@ -23,3 +23,5 @@ export const SELECTED_SINGLE_GOODS = 'selected_single_goods'; //选中单个商�
 export const DEL_CART_SINGLE_GOOD = 'del_cart_single_good'; //删除单个商品
 
 export const DEL_CART_ALL_GOODS = 'del_cart_all_goods'; //删除所有商品
+
+export const CHANGE_GOODS_COUNT = 'change_goods_count'; // 购物车单个物品数量

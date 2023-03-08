@@ -51,7 +51,7 @@
             </div>
             
         </div>
-        <span style="font-weight:bold;color:royalblue">↑ 点击右侧图标返回顶部 ↑</span>
+        <span style="font-weight:bold;color:royalblue;font-size:18px">↑ 点击右侧图标返回顶部 ↑</span>
         <el-backtop :bottom="100">
             <div style="{
                     height: 100%;

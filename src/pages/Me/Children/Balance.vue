@@ -2,9 +2,9 @@
     <div id="my-balance">
         用户：<span>{{ userInfo.user_nickname || '暂无' }}</span>
         <br><br><br>
-        您当前的余额为：<span style="font-style:italic">{{ userInfo.user_balance || '暂无' }}￥</span>
+        您当前账户余额为：<span style="font-style:italic">{{ userInfo.user_balance / 100.0 || '暂无' }}￥</span>
         <br><br>
-        <p>提示:新用户默认余额为20*100(￥)</p>
+        <p>提示:新用户默认余额为20￥</p>
         <div class="btn-section">
             <el-button type="primary" @click="goTo('/home')">返回商城</el-button>
             <el-button type="success" @click="goTo('/user/rechargecenter')">前往充值</el-button>
