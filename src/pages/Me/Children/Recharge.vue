@@ -31,18 +31,25 @@ export default {
             this.$router.replace(path)
         },
         async submitCharge() {
-            let result = await recharge(this.userInfo.id, this.userInfo.user_balance, this.chargeNum)
-            if (result.success_code === 200) {
+            if (!this.chargeNum) {
                 this.$message({
-                    type: 'success',
-                    message: '充值成功！'
-                });
-                //更新本地用户数据
-                this.$store.dispatch('getUserInfo', { user_id: this.userInfo.id })
-                this.chargeNum = null
+                    type: 'warning',
+                    message: '充值金额不能为0'
+                })
             } else {
-                this.$message.error(result.message);
-                console.log(result)
+                let result = await recharge(this.userInfo.id, this.userInfo.user_balance, this.chargeNum)
+                if (result.success_code === 200) {
+                    this.$message({
+                        type: 'success',
+                        message: '充值成功！'
+                    });
+                    //更新本地用户数据
+                    this.$store.dispatch('getUserInfo', { user_id: this.userInfo.id })
+                    this.chargeNum = null
+                } else {
+                    this.$message.error(result.message);
+                    console.log(result)
+                }
             }
         }
     },
