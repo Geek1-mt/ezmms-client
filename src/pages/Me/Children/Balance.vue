@@ -1,6 +1,6 @@
 <template>
     <div id="my-balance">
-        用户：<span>{{ userInfo.user_nickname || '暂无' }}</span>
+        用户：<span>{{ userInfo.user_name || '暂无' }}</span>
         <br><br><br>
         您当前账户余额为：<span style="font-style:italic">{{ userInfo.user_balance / 100.0 || '暂无' }}￥</span>
         <br><br>
