@@ -33,9 +33,9 @@
             </li>
             <li><a @click.prevent="goMe">用户中心</a></li>
             <li><a @click.prevent="goShopCart">购物车</a></li>
+            <li><a @click.prevent="goRecharge">充值中心</a></li>
             <li><a @click.prevent="goAdmin">管理员通道</a></li>
-            <li><a>联系客服</a></li>
-            <li><a>网站导航</a></li>
+            <li><a>网页导航</a></li>
         </ul>
     </div>
 </template>
@@ -114,6 +114,11 @@ export default {
         goShopCart() {
             if (this.userInfo.id) {
                 this.$router.replace('/shopcart')
+            }
+        },
+        goRecharge(){
+            if (this.userInfo.id) {
+                this.$router.replace('/user/rechargecenter')
             }
         }
 

@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <div class="home_top_container">
-            <div class="home_top">主页广场</div>
+            <div class="home_top">广场主页</div>
         </div>
         <!-- <router-link to="/user">用户信息主页</router-link>
         &nbsp;
@@ -31,6 +31,24 @@
                         </el-carousel-item>
                     </el-carousel>
                 </el-col>
+                <el-col :span="4" class="con_log">
+                    <div>
+                        <img :src="userInfo.user_avatar" v-if="userInfo.user_avatar" />
+                        <img src="../../../public/no_login.png" v-else />
+                    </div>
+                    <p> 欢迎来到商店广场主页~</p>
+                    <p v-if="!userInfo.id">
+                        <router-link to="/login">登录</router-link>
+                        <router-link to="/login">注册</router-link>
+                    </p>
+                    <p v-else class="userIn">
+                        <a v-if="userInfo.user_nickname">您好,{{ userInfo.user_nickname }}</a>
+                        <a v-else>您好,{{ userInfo.user_name }}</a>
+                        <router-link to="/user">个人主页</router-link>
+                    </p>
+                    <button class="welfare" @click="goCart">购物车</button>
+                    <button class="vip" @click="goRecharge">充值中心</button>
+                </el-col>
             </el-row>
 
             <!-- 商品展示区域 -->
@@ -49,20 +67,12 @@
                 <img src="../../../public/footer.png" />
                 <div class="footer_text"></div>
             </div>
-            
+
         </div>
         <span style="font-weight:bold;color:royalblue;font-size:18px">↑ 点击右侧图标返回顶部 ↑</span>
         <el-backtop :bottom="100">
-            <div style="{
-                    height: 100%;
-                    width: 100%;
-                    background-color: #f2f5f6;
-                    box-shadow: 0 0 6px rgba(0,0,0, .12);
-                    text-align: center;
-                    line-height: 40px;
-                    border-radius:50%;
-                    color: #1989fa;
-                  }">
+            <div
+                style=" height: 100%; width: 100%;background-color: #f2f5f6;box-shadow: 0 0 6px rgba(0,0,0, .12);text-align: center; line-height: 40px;border-radius:50%;color: #1989fa;">
                 ↑
             </div>
         </el-backtop>
@@ -129,6 +139,12 @@ export default {
         getRList(cate_id) {
             this.$router.replace('/search/' + cate_id + '/1');
         },
+        goCart() {
+            this.$router.replace('/shopcart');
+        },
+        goRecharge() {
+            this.$router.replace('/user/rechargecenter');
+        }
     },
 
 }
@@ -145,7 +161,7 @@ export default {
     font-size: 36px;
     height: 50px;
     margin: 20px auto;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .home_top_container {
@@ -190,7 +206,7 @@ export default {
 
 /*展示登录信息区域*/
 #container .el-row .con_log.el-col {
-    background: white;
+    background-image: url("../../../public/MainPage.jpg");
     text-align: center;
     font-size: 15px;
     color: #989898;
@@ -210,7 +226,8 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    box-shadow: 3px 3px 5px 5px #E3E3E3;
+    box-shadow: 3px 3px 3px 3px #E3E3E3;
+    margin-top: 20px;
 }
 
 .con_log>p {
@@ -222,7 +239,7 @@ export default {
     margin-right: 10px;
     margin-bottom: 5px;
     color: #666;
-    cursor: pointer;
+    /* cursor: pointer; */
     text-decoration: none;
 }
 
@@ -231,7 +248,7 @@ export default {
 }
 
 .con_log>p>a:hover {
-    color: red;
+    color: rgb(21, 163, 252);
     font-weight: 700;
 }
 
@@ -247,10 +264,11 @@ export default {
     transition: background 0.3s ease, color 0.3s ease;
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .con_log>button.welfare {
-    color: #e43f3b;
+    color: #3b71e4;
     background: white;
 }
 
@@ -261,7 +279,7 @@ export default {
 
 .con_log>button:hover {
     color: white;
-    background: #e43f3b;
+    background: #3b7fe4;
 }
 
 /*每类产品的简单展示*/
@@ -281,7 +299,7 @@ export default {
     font-weight: normal;
     color: #222;
     margin-bottom: 20px;
-    
+
 }
 
 .pro_line>h3 {

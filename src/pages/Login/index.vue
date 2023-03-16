@@ -120,7 +120,7 @@ export default {
                         //console.log(this.loginForm)
                         //发送登录请求
                         const result = await pwdLogin(this.loginForm.username, this.loginForm.password)
-                        //console.log(result)
+                        console.log(result)
                         //状态码判断
                         if (result.success_code === 200) {
                             this.userInfo = result.message;
