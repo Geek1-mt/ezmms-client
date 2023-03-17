@@ -166,7 +166,7 @@ export default {
           //清空评论栏
           this.textarea = '';
           //重新获取评论-更新评论栏
-          this.$store.dispatch('reqGoodsComment', {
+          this.$store.dispatch('reqComment', {
             goodsId: this.currentGoodsId
           });
           setTimeout(() => {
